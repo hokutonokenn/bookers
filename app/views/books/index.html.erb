@@ -28,6 +28,15 @@
 
 <h3>New book</h3>
 
+<% if @book.errors.any? %>
+ <p><%= @book.errors.count %> errors prohibited this book from begin saved:</p>
+ <ul>
+   <% @book.errors.full_messages.each do |message| %>
+   <li><%= message %></li>
+   <% end %>
+ </ul>
+<% end %>
+
 <%= form_with model: @book, url: '/books', method: :post do |f| %>
 
  <h4>Title</h4>
